@@ -1,5 +1,394 @@
-<html>
-  <body>
-    <div><b>Hola mundo... prueba</b></div>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <title>UOC - M1.306 - Plataformas de publicación y distribución - Pr&aacute;ctica</title>
+	<link rel="stylesheet" href="./css/estilos.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+</head>
+<body>
+	<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script>
+        function mostrarModal(id, rutaImagen) {
+			const modal = document.getElementById('modal' + id);
+			const imagen = document.getElementById('imagen' + id);
+			imagen.src = rutaImagen;
+			modal.style.display = 'block';
+        }
+		
+		function cerrarModal(id) {
+			const modal = document.getElementById('modal' + id);
+			modal.style.display = 'none';
+		}	
+    </script>
+    <table class="header">
+        <tr>
+            <td><img id="logo" src="./images/logouoc.jpg" alt="UOC"></td>
+            <td>
+                <h1>Universitat Oberta de Catalunya</h1>
+                <h2>M1.306 - Plataformas de publicación y distribución - Pr&aacute;ctica</h2>
+            </td>
+        </tr>
+    </table>
+	<h3><font color="blue">Clip de vídeo EJERCICIO 1</font></h3>
+    <div id="video-container" style="text-align:center;">
+        <video id="video" controls muted="true" preload="metadata" poster="./images/logouoc.jpg" playsinline>
+			<source src="./videos/clip-01-ejercicio-1.mp4" type="video/mp4">   		  <!-- Compatibilidad con H.264  -->
+			<source src="./videos/clip-01-ejercicio-1.webm" type="video/webm"> 	  	  <!-- Compatibilidad con VP9    -->
+			<!--<source src="./videos/clip-01-ejercicio-1.ogv" type="video/ogg">--> 	  	  <!-- Compatibilidad con Theora -->
+			<img id="notsupported" src="./images/notsupported.png" alt="Video NO soportado">
+            <p>Tu navegador no admite los formatos de video: [MP4 códec H.264], [MKV códec H.265], [WEBM codec VP9], [OGV códec Theora]. ¡Por favor, actualiza tu navegador!</p>
+        </video>
+	<div>
+		<p><a href="./videos/clip-01-ejercicio-1.mkv" download>Opcionalmente puede <strong>descargar el video MKV</strong></a></p>
+	</div>
+    </div>
+	<h3>Respuestas a las preguntas de la Pr&aacute;ctica</h3>
+    <div class="text-blocks">
+        <p>
+			<h3><font color="red">[Pinchar en las imágenes para ampliarlas y ver su detalle]</font></h3>
+			<h3><font color="blue">Tarea 1.1</font></h3>
+			En este primer apartado se han tomado las siguientes opciones de diseño:
+			<li><strong>Vídeo original: clip-01.mp4</strong>. Obtenido con un teléfono Samsung S10. Se procede a codificarlo con Avidemux según las siguientes características.</li>
+			<li><strong>Tamaño de los videos: en 1080p</strong>. Para contenidos de videos hoy en día es casi un est&aacute;ndar la resolución 1080p, las principales distribuidoras de contenido lo usan, y dado el tamaño del vídeo parece una opción adecuada para una correcta visualización, sin un excesivo tamaño y con buena resolución.</li>
+			<li><strong>Formatos:</strong> se opta por incluir los siguientes formatos para garantizar compatibilidad, optimización de carga, redundancia y respaldo, SEO y accesibilidad:
+			<ul>
+				<li>MP4 (códec H.264): como primera opción, dado que es formato ampliamente usado y compatible; buena calidad con una compresión eficiente.</li>
+				<li>WebM (códec VP9): como opción que garantice mayor compresión con similar calidad como opción para conexiones lentas o con poca cobertura que requiera menor peso. Además, no tiene restricciones de licencia.</li>
+				<li>OGV (códec Theora): opción de código abierto para otro tipo de navegadores. Codificación fuera de Avidemux, al no soportar este códec la aplicación.</li>
+				<li>MKV (códec H.265): opción para los más exigentes, aunque la mayoría de los navegadores no implementan esta opción (sobre todo por costes de licenciamiento), se deja enlace para descargar el video en este formato.</li>
+			<figure>
+				<center><img id="captura3" src="./images/avidemux1.1.png" alt="Avidemux codificaciones" onclick="mostrarModal('10', './images/avidemux1.1.png')" style="cursor: pointer;"></center>
+				<center><figcaption><i>Avidemux codificaciones</i></figcaption></center>
+			</figure>
+			<div class="modal" id="modal10" onclick="cerrarModal('10')">
+				<div class="modal-content">
+					<span class="close" onclick="cerrarModal('10')">&times;</span>
+					<img src="./images/avidemux1.1.png" alt="Avidemux codificaciones" id="imagen10">
+				</div>
+			</div>			
+			</ul>
+			</li>
+			<li><strong>Tasa de bits: codificado con Avidemux al 10% de la tasa original</strong> <i>(Tasa de bits media (dos pasadas)</i>, para aligerar el peso del archivo. Si bien no hablamos de un video pesado, se aprovechan los conocimientos adquiridos en la asignatura para obtener una calidad similar con un menos peso, lo que simplificará su difusión en la red. Se observa como si bien la codificación con H.264 al 10% de la tasa de bits del video original respeta la tasa indicada, al codificar con VP9, debido a la naturaleza de compresión del video, se adapta a la complejidad del video. Al ser éste un video sin mucha complejidad visual no necesita de una tasa de bits muy alta para mantener la calidad de este, por ello, creo que la codificación se ajusta más a la realidad del contenido y se optimiza para su distribución. Si bien se podría ajustar una tasa de bits aún menor, he querido jugar con estos valores para valorar la experiencia final de usuario y verificar cómo se comporta la Web. Además, a simple vista, la calidad del video no se ve mermada y su tamaño ofrece una mejor respuesta y experiencia de usuarios finales, dado que se reduce su tamaño a más de la mitad. Esta es la comparativa:</li>
+			<figure>
+				<center><img id="captura3" src="./images/mediainfo1.1.png" alt="MediaInfo comparativa" onclick="mostrarModal('11', './images/mediainfo1.1.png')" style="cursor: pointer;"></center>
+				<center><figcaption><i>MediaInfo comparativa</i></figcaption></center>
+			</figure>
+			<div class="modal" id="modal11" onclick="cerrarModal('11')">
+				<div class="modal-content">
+					<span class="close" onclick="cerrarModal('11')">&times;</span>
+					<img src="./images/mediainfo1.1.png" alt="MediaInfo comparativa" id="imagen11">
+				</div>
+			</div>			
+		</p>
+        <p>
+			<h3><font color="blue">Tarea 1.2</font></h3>
+			HTML5 ofrece de forma nativa, flexible y eficiente métodos estándar, de amplia versatilidad, para la publicación y visualización videos a través de la Web dando alcance a multitud de dispositivos móviles o de escritorio. Introduce nuevos elementos para incrustar contenido multimedia, como son las etiquetas "<strong>video</strong>" y "<strong>audio</strong>", sin la dependencia de antaño de otras tecnologías de terceros, como Flash. Da compatibilidad directa en los navegadores de más amplio uso en le red y soporta varios formatos de los más extendidos.<br>
+			Además, se basa en un estándar abierto y flexible, sin restricciones por licenciamiento, lo que da a la comunidad de desarrollo opciones de crear soluciones más personalizadas y escalables. Da muchas opciones sobre el comportamiento y apariencia de los videos, pudiendo integrarse con otros lenguajes, como JavaScript y CSS, dando como resultado unas interfaces de usuario mucho más personalizadas, amigables, ricas, interactivas y accesibles (con opciones nativas para describir el contenido del video, transcripciones o subtítulos o alternativas de teto para elementos visuales).
+
+		</p>
+        <p>
+			<h3><font color="blue">Tarea 1.3</font></h3>
+			Esta web se ha creado dentro de un repositorio de GitHub, aprovechando una de sus características: GitHub Pages. Esta, permite crear y alojar sitios web directamente desde los repositorios. Permite una gran cantidad de opciones de forma gratuita, al margen de la integración con el universo Git, de personalización del sitio y opciones de configuración, como usar un dominio personalizado. <br>
+			Considero es una gran opción, sencilla, cómoda y muy útil no sólo para el propósito de esta práctica sino a nivel personal e, incluso, corporativo.
+		</p>
+        <p>
+			<h3><font color="blue">Tarea 1.4</font></h3>
+			Funcionalidades añadidas en la etiqueta video principal, entre todas las vistas:
+			<ul>
+			<li><span id="custom-font">controls</span>: con el objetivo de mostrar los controles de vídeo incorporados.</li>
+			<li><span id="custom-font">muted</span>: por defecto, el sonido del video estará desactivado.</li>
+			<li><span id="custom-font">preload</span>: para indicar al navegador que no descargue el video por defecto, pero sí sus metadatos, dejando a elección del espectador reproducirlo o no presionando <i>play</i>.</li>
+			<li><span id="custom-font">playsinline</span>: con el objetivo de que para dispositivos móviles no se reproduzca el video a pantalla completa, si no dentro de su área específica.</li>
+			<li><span id="custom-font">poster</span>: para mostrar una imagen como presentación antes de comenzar con el video.</li>
+			<li><span id="custom-font">source</span>: como etiqueta contenedora del archivo de video. Se incluyen varios formatos para garantizar compatibilidad con diversos navegadores; la operativa sería, intenta mostrar el primer video (mp4), si no es compatible, el siguiente (WebM) y, así, con el resto. En caso de no poder cargar ninguno, muestra una imagen de video no soportado y, por último, si se trata de un navegador sin capacidad gráfica, muestra un texto.</li>
+			<li><span id="custom-font">img</span>: para, en caso de no poder mostrar ningún video, mostrar una imagen que indique lo que está sucediendo.</li>
+			</ul>
+		</p>
+        <p> 
+			<h3><font color="blue">Tarea 1.5</font></h3>
+			Dentro de los servicios de transcoficación ofertados por los CDN se pueden destacar:
+			<h4>Servicios de transcodificación y adaptación de Contenido</h4>
+			<ul>
+				<li><strong>Adaptación al dispositivo</strong>: transcodificación de videos en diferentes resoluciones y formatos para adaptarse a distintos dispositivos en los que se intente reproducir el contenido(móviles, tablets o TV de última generación), incluyendo la creación de variantes de video para Streaming adaptativo (HLS o DASH).</li>
+				<li><strong>Ajuste de bitrate</strong>:en tiempo real en función de las condiciones de la red del usuario final para una experiencia de visualización sin interrupciones.</li>
+				<li><strong>Generación de subtítulos</strong>: de forma automática mediante el uso de tecnologías de reconocimiento de voz y procesamiento de lenguaje natural.</li>
+				<li><strong>Traducción de subtítulos</strong>: de manera automática a múltiples idiomas con el objetivo de llegar a una audiencia mundial.</li>
+				<li><strong>Redimensionamiento dinámico</strong>: de imágenes al vuelo para diferentes tamaños y resoluciones de pantalla.</li>
+				<li><strong>Conversión de formato</strong>: convierte imágenes a formatos más eficientes (como WebP) con el objetivo de minimizar tamaño de los archivos y, por consiguiente, mejorar los tiempos de carga.</li>
+			</ul>
+			<h4>Servicios avanzados de análisis y gestión de contenidos</h4>
+			<ul>
+				<li><strong>Detección de cambios de escena</strong>: existen algoritmos que identifican cambios de escenas, que se pueden usar para insertar anuncios o hacer transiciones suaves en la reproducción.</li>
+				<li><strong>Marcado de eventos</strong>: como, por ejemplo, hitos que se identifican y marcan automáticamente en el contenido de video (<i>touchdowns</i> en un partido de Fútbol Americano, goles en fútbol, etc.).</li>
+				<li><strong>Reconocimiento facial</strong>: como la detección de caras en el contenido de video, que luego puede ser usado para etiquetado automático o para la  personalización de la experiencia del usuario.</li>
+				<li><strong>Análisis de audiencia</strong>: por ejemplo, con detección facial para analizar la demografía de la audiencia y personalizar el contenido en función de estos datos.</li>
+			</ul>
+			<h4>Servicios de seguridad y protección de contenidos</h4>
+			<ul>
+				<li><strong>Marcas de agua</strong>: se oferta la inclusión de marcas de agua visibles, o invisibles, para rastrear la distribución no autorizada.</li>
+				<li><strong>DRMs</strong>: se realiza una gestión de derechos digitales para asegurar que solo los usuarios autorizados puedan acceder al contenido, tal y como hacen, por ejemplo, las plataformas de contenidos audiovisuales.</li>
+				<li><strong>Autenticación y autorización</strong>: se realiza el uso tokens seguros para controlar el acceso al contenido, controlando los accesos no autorizados.</li>
+			</ul>
+			<h4>Optimización del rendimiento</h4>
+			<ul>
+				<li><strong>Edge Computing</strong>: se realizan operaciones en los servidores del borde (<i>edge servers</i>) más cercanos al usuario final para reducir la latencia y, por tanto, mejorar el rendimiento.</li>
+				<li><strong>Almacenamiento en caché dinámico</strong>: de contenido dinámico y estático para reducir tanto los tiempos de carga como la carga en los servidores de origen.</li>
+			</ul>
+			<h4>Integración y API</h4>
+			<ul>
+				<li><strong>APIs de control</strong>: que permiten a los desarrolladores gestionar y controlar el contenido de manera programática.</li>
+				<li><strong>Integración con plataformas de terceros</strong>: con plataformas y servicios, como sistemas de gestión de contenido, de análisis o servicios de publicidad.</li>
+			</ul>
+		</p>
+        <p>
+			<h3><font color="red">[Pinchar en las imágenes para ampliarlas y ver su detalle]</font></h3>
+			<h3><font color="blue">Tarea 2.1</font></h3>
+			Codificación del clip01.mp4 original al formato y codificación establecida en la práctica:<br>
+			<figure>
+				<img id="captura3" src="./capturas/codifica-tarea-2.1.png" alt="Codificación clip01" onclick="mostrarModal('01', './capturas/codifica-tarea-2.1.png')" style="cursor: pointer;">
+				<figcaption><i>Codificación clip01</i></figcaption>
+			</figure>
+			<div class="modal" id="modal01" onclick="cerrarModal('01')">
+				<div class="modal-content">
+					<span class="close" onclick="cerrarModal('01')">&times;</span>
+					<img src="./capturas/codifica-tarea-2.1.png" alt="Codificación clip01" id="imagen01">
+				</div>
+			</div>
+		</p>		
+        <p>
+			<h3><font color="blue">Tarea 2.2 y Tarea 2.3</font></h3>
+			<h4>VLC de Emisión:</h4>
+			<ul>
+				<li><strong>Códec</strong>: H264 - MPEG-4 AVC</li>
+				<li><strong>Media <i><u>aproximada</u></i> de Tasa de bits de contenido</strong>: 5000 kb/s</li>
+				<figure>
+					<img id="captura3" src="./capturas/codifica-tarea-2.2-emisor.png" alt="Codificación Emisor VLC" onclick="mostrarModal('02', './capturas/codifica-tarea-2.2-emisor.png')" style="cursor: pointer;">
+					<figcaption><i>Codificación Emisor VLC</i></figcaption>
+				</figure>
+				<div class="modal" id="modal02" onclick="cerrarModal('02')">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarModal('02')">&times;</span>
+						<img src="./capturas/codifica-tarea-2.2-emisor.png" alt="Codificación Emisor VLC" id="imagen02">
+					</div>
+				</div>
+			</ul>
+			<h4>VLC de Recepción:</h4>
+			<ul>
+				<li><strong>Códec</strong>: H264 - MPEG-4 AVC</li>
+				<li><strong>Media <i><u>aproximada</u></i> de Tasa de bits de contenido</strong>: 1500 kb/s</li>
+				<figure>
+					<img id="captura3" src="./capturas/codifica-tarea-2.2-receptor.png" alt="Codificación Receptor VLC" onclick="mostrarModal('03', './capturas/codifica-tarea-2.2-receptor.png')" style="cursor: pointer;">
+					<figcaption><i>Codificación Emisor VLC</i></figcaption>
+				</figure>
+				<div class="modal" id="modal03" onclick="cerrarModal('03')">
+					<div class="modal-content">
+						<span class="close" onclick="cerrarModal('03')">&times;</span>
+						<img src="./capturas/codifica-tarea-2.2-receptor.png" alt="Codificación Receptor VLC" id="imagen03">
+					</div>
+				</div>				
+			</ul>
+		</p>			
+        <p>
+			<h3><font color="blue">Tarea 2.4</font></h3>
+			El retardo experimentado en la pausa del receptor que observo está, aproximadamente <strong>entre 1,5 segundos y 2 segundos</strong>, y puede estar relacionado con varios factores que, por otro lado, son comunes en las retransmisiones de streaming:
+			<h4>Buffering</h4>
+			<ul>
+				<li><strong>Buffer en el receptor</strong>: en la retransmisión el reproductor del receptor almacena una cierta cantidad de datos en un buffer asegurando que la reproducción sea fluida y no se vea interrumpida por fluctuaciones en la red. Por esto se reproduce un retraso, porque el receptor está reproduciendo datos que ya ha recibido y almacenado antes de que llegue la instrucción de la pausa.</li>
+				<li><strong>Buffer en la red</strong>: puede haber buffering en varios puntos intermedios en la red, especialmente si se trata de una transmisión a través de Internet o una red con varios nodos, aunque esto no debería ser determinante dado que la prueba es en local o, al menos, no impactar directamente.</li>
+			</ul>
+			<h4>Latencia de la red</h4>
+			<ul>
+				<li><strong>Transmisión de datos</strong>: incluso en una red local, siempre hay una latencia aosociada a la transmisión de los datos, dado que éstos deben viajar dentro de la red y el receptor debe procesar los datos, transformarlos si procede y comenzar la emisión.</li>
+				<li><strong>Protocolo de transmisión</strong>: la latencia varía en función del protocolo usando, en nuestro caso es rtp, dado que algunos priorizan a latencia, pero otros la sacrifican en cierta medida en pos de fiabilidad y calidad.</li>
+			</ul>
+			<h4>Procesamiento del receptor</h4>
+			<ul>
+				<li><strong>Procesamiento del buffer y sincronización</strong>: el receptor debe procesar el contenido que tiene en el buffer antes de que una instrucción, como la pausa, sea procesada, incluyendo la decodificación del audio y del video, así como los ajustes de los tiempos de reproducción.</li>
+			</ul>
+			<h4>Configuración del emisor y del receptor</h4>
+			<ul>
+				<li><strong>Tamao del buffer y configuración de la red</strong>: los tamaños del buffer de ambos extresmo pueden afectar a los tiempos de procesar la pausa solicitada, si se configuran buffers más altos, debe procesar más datos antes de que le llegue la señal de pausado. De la misma forma, la porpia configuración de la red puede afectar a este retardo y al procesamiento de instruciones específicas más allá de las propias del Streaming en sí.</li>
+			</ul>
+		</p>
+		<h3><font color="blue">Tarea 2.5</font></h3>
+		<h4>Capturas del proceso en diferentes momentos de la emisión:</h4>
+		<div style="display: flex; flex-wrap: wrap;">
+			<figure style="flex: 1; margin: 10px;">
+				<img id="captura3" src="./capturas/tasabitscontenido/tasabits01.png" alt="Tasa bits de contenido 01" onclick="mostrarModal('04', './capturas/tasabitscontenido/tasabits01.png')" style="cursor: pointer;">
+				<figcaption><i>Tasa de bits de contenido t=01</i></figcaption>
+			</figure>
+			<div class="modal" id="modal04" onclick="cerrarModal('04')">
+				<div class="modal-content1">
+					<span class="close" onclick="cerrarModal('04')">&times;</span>
+					<img src="./capturas/tasabitscontenido/tasabits01.png" alt="Codificación Receptor VLC" id="imagen04" style="width:100%;">
+				</div>
+			</div>	
+			<figure style="flex: 1; margin: 10px;">
+				<img id="captura3" src="./capturas/tasabitscontenido/tasabits02.png" alt="Tasa bits de contenido 02" onclick="mostrarModal('05', './capturas/tasabitscontenido/tasabits02.png')" style="cursor: pointer;">
+				<figcaption><i>Tasa de bits de contenido t=02</i></figcaption>
+			</figure>
+			<div class="modal" id="modal05" onclick="cerrarModal('05')">
+				<div class="modal-content1">
+					<span class="close" onclick="cerrarModal('05')">&times;</span>
+					<img src="./capturas/tasabitscontenido/tasabits02.png" alt="Codificación Receptor VLC" id="imagen05" style="width:100%;">
+				</div>
+			</div>				
+			<figure style="flex: 1; margin: 10px;">
+				<img id="captura3" src="./capturas/tasabitscontenido/tasabits03.png" alt="Tasa bits de contenido 03" onclick="mostrarModal('06', './capturas/tasabitscontenido/tasabits03.png')" style="cursor: pointer;">
+				<figcaption><i>Tasa de bits de contenido t=03</i></figcaption>
+			</figure>
+			<div class="modal" id="modal06" onclick="cerrarModal('06')">
+				<div class="modal-content1">
+					<span class="close" onclick="cerrarModal('06')">&times;</span>
+					<img src="./capturas/tasabitscontenido/tasabits03.png" alt="Codificación Receptor VLC" id="imagen06" style="width:100%;">
+				</div>
+			</div>				
+			<figure style="flex: 1; margin: 10px;">
+				<img id="captura3" src="./capturas/tasabitscontenido/tasabits04.png" alt="Tasa bits de contenido 04" onclick="mostrarModal('07', './capturas/tasabitscontenido/tasabits04.png')" style="cursor: pointer;">
+				<figcaption><i>Tasa de bits de contenido t=04</i></figcaption>
+			</figure>
+			<div class="modal" id="modal07" onclick="cerrarModal('07')">
+				<div class="modal-content1">
+					<span class="close" onclick="cerrarModal('07')">&times;</span>
+					<img src="./capturas/tasabitscontenido/tasabits04.png" alt="Codificación Receptor VLC" id="imagen07" style="width:100%;">
+				</div>
+			</div>				
+			<figure style="flex: 1; margin: 10px;">
+				<img id="captura3" src="./capturas/tasabitscontenido/tasabits05.png" alt="Tasa bits de contenido 05" onclick="mostrarModal('08', './capturas/tasabitscontenido/tasabits05.png')" style="cursor: pointer;">
+				<figcaption><i>Tasa de bits de contenido t=05</i></figcaption>
+			</figure>
+			<div class="modal" id="modal08" onclick="cerrarModal('08')">
+				<div class="modal-content1">
+					<span class="close" onclick="cerrarModal('08')">&times;</span>
+					<img src="./capturas/tasabitscontenido/tasabits05.png" alt="Codificación Receptor VLC" id="imagen08" style="width:100%;">
+				</div>
+			</div>			
+			<figure style="flex: 1; margin: 10px;">
+				<img id="captura3" src="./capturas/tasabitscontenido/tasabits06.png" alt="Tasa bits de contenido 06" onclick="mostrarModal('09', './capturas/tasabitscontenido/tasabits06.png')" style="cursor: pointer;">
+				<figcaption><i>Tasa de bits de contenido t=06</i></figcaption>
+			</figure>
+			<div class="modal" id="modal09" onclick="cerrarModal('09')">
+				<div class="modal-content1">
+					<span class="close" onclick="cerrarModal('09')">&times;</span>
+					<img src="./capturas/tasabitscontenido/tasabits06.png" alt="Codificación Receptor VLC" id="imagen09" style="width:100%;">
+				</div>
+			</div>			
+		</div>
+		<p>
+			<h4>Compresión del emisor de VLC:</h4>
+			Aproximadamente, el emisor de VLC está realizando la siguiente compresión teniendo en cuenta las tasas de bits de contenido medias indicadas en los puntos de las tareas 2.2 y 2.3:<br><br>
+			<div>
+			<math>
+				<mrow>
+					<mi>Compresión</mi>
+					<mo>=</mo>
+					<mfrac>
+						<mi>Tasa de bits original</mi>
+						<mi>Tasa de bits del stream transcodificado</mi>
+					</mfrac>
+					<mo>=</mo>
+					<mfrac>
+						<mi>5000 kb/s</mi>
+						<mi>1500 kb/s</mi>
+					</mfrac>
+					<mo>=</mo>
+					<mo>3,33</mo>
+				</mrow>
+			</math>
+			</div>
+			<div><br>
+			Esto significa que VLC está comprimiendo el video con un factor de, aproximadamente, 3,33. Es decir, el flujo de salida del video está utilizando solo un tercio de la tasa de bits del contenido original, lo que creo implica una reducción significativa en la calidad del video original para adaptarse a las limitaciones de ancho de banda del receptor, entiendo que limitadas a la conexión y carga de la red local donde se ha realizado la prueba. Además, hay que tener en cuenta que hay factores adicionales que pueden afectar a la compresión: códecs utilizados, la configuración específica usada en la transcodificación (tasa de bits objetivo, la resolución, el nivel de calidad (CRF)), la propia naturaleza del video si tiene detalles complejos o movimiento,  etc. Creo que de los datos obtenidos se extrae que la compresión que ha realizado VLC es significativa, lo que puede originar pérdida de detalles y menor fidelidad respecto del video original.
+			</div>
+		</p>
+		<h3><font color="blue">Tarea 2.6</font></h3>
+		<h3>Streaming de baja latencia con Google Cloud CDN</h3>
+		<p>El Streaming de baja latencia es esencial para aplicaciones donde el retraso entre la captura de video y la visualización por parte del usuario final debe ser mínimo, como en transmisiones en vivo de eventos deportivos, juegos interactivos, y otras aplicaciones en tiempo real. El objetivo, lógicamente, es reducir al mínimo el retraso entre la emisión y la recepción del video por parte del usuario final. He elegido esta opción porque la latencia en este tipo de eventos es fundamental para manejar bien la experiencia de usuario final y, inluso, hay estudios que indican que ante problemas de <i>buffering</i> hasta el 40% de los espectadores abandonan la transmisión, por lo que el impacto de no gestionar correctamente la latencia puede ser crucial para el éxito de este tpo de contenidos. Google Cloud CDN ofrece una infraestructura robusta para soportar este tipo de transmisiones y, dado que ha sido el CDN elegido para las PECs anteriores, me centraré en él y sus opciones. El proceso sería:</p>
+
+		<h4>Configuración Inicial</h4>
+		<ul>
+			<li><strong>Crear una cuenta de Google Cloud</strong>: lo primero, como ya sabemos, es disponer de una cuenta de Google Cloud desde <a href="https://cloud.google.com/">Google Cloud</a>.</li>
+			<li><strong>Configurar el almacenamiento</strong>: según el proceso, y como ya vemos en la primera PEC, todo el contenido fuente debe estar almacenado en Google Cloud Storage. Deberemos crear un bucket y subir nuestros archivos de video a dicha ubicación. Los comandos desde la propia consola de Google Cloud serían:<br>
+				<pre><code>
+gsutil mb gs://your-bucket-name
+gsutil cp path/to/your/video.mp4 gs://your-bucket-name
+				</code></pre>
+			</li>
+		</ul>
+		<h4>Preparación del servicio de transmisión</h4>
+		<ul>
+			<li><strong>Configurar el servicio de Streaming</strong>: utilizando Google Cloud Media CDN prepararemos nuestro video para la transmisión en baja latencia. Google Cloud Media CDN se integra con servicios como Wowza Streaming Engine para manejar la transcodificación y la entrega del video de la mejor forma posible.
+			<pre><code>wowza-streaming-engine create-transcode-stream --bucket-name your-bucket-name --stream-name your-stream-name</code></pre>
+			</li>
+			<li><strong>Transcodificación</strong>: tenemos que asegurarnos que el contenido esté codificado en los formatos adecuados para el streaming en baja latencia. Por ejemplo, HLS y DASH son formatos comunes para la transmisión de video en vivo y ambos son compatibles con Google Cloud CDN, por lo que podrían ser las opciones de formato a elegir. Para ello, podemos hacer uso dehacer uso de servicios como Google Cloud Media Transcoding o herramientas de terceros como FFmpeg o el propio Avidemux, luego el contenido se segmenta en gragmentos más pequeños (<i>chunks</i>) de 2-10 segundos, lo que facilita la entrega a través de HLS o DASH. Un ejemplo para generar videos codificados en otros formatos usando FFmpeg sería éste:
+			<pre><code>
+ffmpeg -i input.mp4 -vf scale=-2:720 -b:v 1500k output_720p.mp4
+ffmpeg -i input.mp4 -vf scale=-2:480 -b:v 800k output_480p.mp4
+			</code></pre>			
+			</li>
+		</ul>
+		<h4>Implementación del CDN</h4>
+		<ul>
+			<li><strong>Configuración</strong>: Google Cloud CDN puede ser configurado para entregar contenido de video con baja latencia, podemos optar por realizar la creación de una configuración de CDN con cachés distribuidas globalmente, que amplía nuestras capacidades de acecso a público de cualquier parte del globo. Desde la consola de Cloud deberíamos lanzar estos comandos:
+			<pre><code>
+gcloud compute backend-buckets create your-backend-bucket --gcs-bucket-name=your-bucket-name
+gcloud compute url-maps create your-url-map --default-backend-bucket=your-backend-bucket
+gcloud compute target-http-proxies create your-http-proxy --url-map=your-url-map
+gcloud compute forwarding-rules create your-forwarding-rule --global --target-http-proxy=your-http-proxy --ports=80
+			</code></pre>
+			</li>
+			<li><strong>Optimización de caché</strong>: con Google Cloud CDN podemos definir olíticas de caché específicas para los segmentos de video, podemos configurar la caché para almacenar y entregar contenido en ubicaciones estratégicas con el objetivo de minimizar la latencia, que ya se ha comentado el impacto que puede suponer para una retransmisión en directo.</li>
+		</ul>
+		<h4>Distribución del contenido</h4>
+		<ul>
+			<li><strong>Distribución</strong>: Google Cloud CDN utiliza su red global para distribuir el contenido a los usuarios finales y optimiza los procesos asociados a la baja latencia mediante el almacenamiento en caché del contenido cerca de los puntos de presencia (PoPs) de los usuarios. Con ello, se garantiza que los usuarios finales dispongan el contenido lo más cerca posible de sus ubicaciones, minimizando la latencia. Además de las políticas que se puedan aplicar a la hora de gestionar la red, los nodos y estos puntos finales para garantizar la tolerancia a fallos, la disponibilidad y la robustez del proceso de Streaming.</li>
+			<li><strong>Monitorización y escalabilidad</strong>: como ya se vio en PECs anteriores, Google Cloud proporciona herramientas para monitorizar el rendimiento de la transmisión y ajustar la capacidad según la demanda: Google Cloud Monitoring y Logging para este propósito, de las que se habló en prácticas anteriores y que son dos herramientas muy potentes de las que poder revisar y actuar, incluso de forma desatendida, según la configuración que se establezca.</li>
+		</ul>
+		<h4>Gestión y políticas de usuarios</h4>
+		<ul>
+			<li><strong>Roles y Permisos</strong>: mediante Google Cloud IAM (Identity and Access Management) podemos definir roles y permisos específicos para gestionar la seguridad y el acceso al servicio de transmisión. Por ejemplo, podemos asignar roles como <code>Viewer</code>, <code>Editor</code>, y <code>Admin</code> para controlar quién puede ver, editar, o administrar los recursos del Streaming. Un ejemplo de cómo se puede realizar desde la consola sería este:
+				<pre><code>gcloud projects add-iam-policy-binding your-project-id --member=user:your-email@example.com --role=roles/viewer</code></pre>
+			</li>
+			<li><strong>Control de acceso</strong>: a través de Google Cloud podemos implementar políticas de control para restringir el acceso al contenido de Streaming basándonos en criterios específicos como pueden ser: la ubicación del usuario, el dispositivo con el que está accediendo, las credenciales de acceso que disponga, etc.</li>
+		</ul>
+        <h4>Costes estimados</h4>
+        <p>Para calcular el coste aproximado de una transmisión en vivo de, suponemos como punto de partida, un stream HD para 10,000 usuarios simultáneos, consideraremos los siguientes extremos:</p>
+        <ul>
+            <li><strong>Coste de Egress de red</strong>: Google Cloud cobra por la cantidad de datos transferidos desde sus servidores a los usuarios finales, tanto de tráfico entre nuestros recursos en Cloud hacia recursos dentro de Cloud como hacia regiones fuera ubicadas en Internet.</li>
+            <li><strong>Coste de almacenamiento</strong>: coste de almacenar el contenido de video en Google Cloud Storage.</li>
+            <li><strong>Coste de transcodificación</strong>: coste de transcodificar el video para diferentes formatos y resoluciones, que suele ser óptimo para abarcar múltiples dispositivos y puestos finales.</li>
+            <li><strong>Coste de CDN</strong>: coste de usar Google Cloud CDN para entregar el contenido a los usuarios.</li>
+        </ul>
+        <h4>Un ejemplo con números más reales del coste estimado</h4>
+        <ul>
+            <li><strong>Tamaño del Video HD</strong>: suponiendo que cada segundo de video HD tiene un <i>bitrate</i> de 5 Mbps.</li>
+            <li><strong>Transmisión de un minuto</strong>: 60 segundos * 5 Mbps = 300 Mbps = 37,5 MB por minuto.</li>
+            <li><strong>10.000 Usuarios Simultáneos</strong>: 10.000 * 37.5 MB = 375.000 MB = 375 GB por minuto.</li>
+            <li><strong>Coste de Egress</strong>: según Google Cloud tiene un promedio de, aproximadamente, 0,12 $ por GB para el primer TB. Es decir:
+                <pre><code>375 GB * 0,12 $/GB = 45 $</code></pre>
+            </li>
+            <li><strong>Coste de almacenamiento y transcodificación</strong>: este punto dependerá en gran medida de los servicios específicos que tengamos contratados y la duración propia del video, pero en línea generales, la mayor parte del coste derivará del <i>egress</i> de red.</li>
+        </ul>
+        <p>Por todo lo anterior, el coste estimado por minuto para <strong>una transmisión HD en vivo para 10,000 usuarios simultáneos es de 45$</strong>, aproximadamente, si consideramos solo el coste de <i>egress</i> de red. Los costos adicionales de almacenamiento y transcodificación deben ser sumados según los servicios específicos utilizados, pero para este caso, si asumimos una estructura básica el coste sería el indicado.</p>
+        <p>En resumen, el streaming de baja latencia con Google Cloud CDN implica la configuración de servicios de almacenamiento, transcodificación, y distribución optimizados para minimizar el retraso. La implementación efectiva requiere la gestión de roles y permisos de usuario mediante Google Cloud IAM y la optimización de políticas de caché para asegurar la entrega rápida del contenido. El coste principal proviene del tráfico de red necesario para entregar el video a múltiples usuarios simultáneos.</p>		
+		
+    </div>
+	<div class="biblio">
+	<h3>Biblografía</h3>
+		<div><strong>[1]&nbsp;</strong>HTML (tag video): <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video</a></div>
+		<div><strong>[2]&nbsp;</strong>Bitrate con 1080p: <a href="https://www.anymp4.com/es/video-editing/best-bitrate-for-1080p.html">https://www.anymp4.com/es/video-editing/best-bitrate-for-1080p.html</a></div>
+		<div><strong>[3]&nbsp;</strong>Servicios de transcodificación y addaptación:
+		<div><a href="https://medium.com/google-cloud/automate-your-vod-transcoding-at-scale-with-gcp-part-1-87503fdd3a9f">https://medium.com/google-cloud/automate-your-vod-transcoding-at-scale-with-gcp-part-1-87503fdd3a9f</a></div>
+		<div><a href="https://www.coconut.co/articles/global-efficiency-the-power-of-multiregion-cdn-in-streamlining-cloud-video-transcoding-integration">https://www.coconut.co/articles/global-efficiency-the-power-of-multiregion-cdn-in-streamlining-cloud-video-transcoding-integration</a></div>
+		</div>		
+	</div>
+	<div><strong>[4]&nbsp;</strong>Lilbrería MathML: 
+	<div><a href="https://developer.mozilla.org/en-US/docs/Learn/MathML/First_steps/Getting_started">https://developer.mozilla.org/en-US/docs/Learn/MathML/First_steps/Getting_started</a></div>
+	<div><a href="http://cdn.mathjax.org/mathjax/latest/MathJax.js">http://cdn.mathjax.org/mathjax/latest/MathJax.js</a></div>
+	</div>
+	<div><strong>[5]&nbsp;</strong>Google Cloud CDN: <a href="https://cloud.google.com/">https://cloud.google.com/</a></div>
+	<div><strong>[6]&nbsp;</strong>HTML5: <a href="https://lenguajehtml.com/html/multimedia/etiqueta-html-video/">https://lenguajehtml.com/html/multimedia/etiqueta-html-video/</a></div>
+</body>
 </html>
